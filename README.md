@@ -45,4 +45,9 @@ E.g. lepton scale
     Nuisances/LeptonScale
 
     
+Signal regions 
+
+    SignalRegion/ggH
+    SignalRegion/VBF
+    SignalRegion/All
     
