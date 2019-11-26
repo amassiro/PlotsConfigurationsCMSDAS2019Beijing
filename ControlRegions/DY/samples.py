@@ -64,13 +64,14 @@ GenLepMatch   = '(Alt$(Lepton_promptgenmatched[0]*Lepton_promptgenmatched[1], 0)
 
 DataRun = [
     ['B','Run2017B-Nano14Dec2018-v1'],
-    ['C','Run2017C-Nano14Dec2018-v1'],
-    ['D','Run2017D-Nano14Dec2018-v1'],
-    ['E','Run2017E-Nano14Dec2018-v1'],
-    ['F','Run2017F-Nano14Dec2018-v1']
+    #['C','Run2017C-Nano14Dec2018-v1'],
+    #['D','Run2017D-Nano14Dec2018-v1'],
+    #['E','Run2017E-Nano14Dec2018-v1'],
+    #['F','Run2017F-Nano14Dec2018-v1']
 ]
 
-DataSets = ['MuonEG','SingleMuon','SingleElectron','DoubleMuon', 'DoubleEG']
+#DataSets = ['MuonEG','SingleMuon','SingleElectron','DoubleMuon', 'DoubleEG']
+DataSets = ['MuonEG','SingleMuon','SingleElectron']
 
 #
 # trigger logic:
@@ -79,8 +80,8 @@ DataTrig = {
     'MuonEG'         : ' Trigger_ElMu' ,
     'SingleMuon'     : '!Trigger_ElMu && Trigger_sngMu' ,
     'SingleElectron' : '!Trigger_ElMu && !Trigger_sngMu && Trigger_sngEl',
-    'DoubleMuon'     : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && Trigger_dblMu',
-    'DoubleEG'       : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && !Trigger_dblMu && Trigger_dblEl'
+    #'DoubleMuon'     : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && Trigger_dblMu',
+    #'DoubleEG'       : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && !Trigger_dblMu && Trigger_dblEl'
 }
 
 #########################################
@@ -92,9 +93,6 @@ DataTrig = {
 #
 # -> genmatching is not required for Vg sample
 #
-
-#mcCommonWeightNoMatch = 'XSWeight*SFweight*METFilter_MC'
-#mcCommonWeight        = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 
 mcCommonWeightNoMatch = 'XSWeight*' + SFweight + '*METFilter_MC'
 mcCommonWeight        = 'XSWeight*' + SFweight + '*' + GenLepMatch +'*METFilter_MC'
@@ -117,114 +115,9 @@ samples['DY'] = {
         'FilesPerJob': 8,
 }
 
-#                 SampleDictionary       Sample                  weight
-addSampleWeight(samples,'DY',        'DYJetsToLL_M-50',         ptllDYW_NLO)
-addSampleWeight(samples,'DY',        'DYJetsToLL_M-10to50-LO',  ptllDYW_LO)
-
-
-###### Top #######
-
-files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_s-channel') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_tW_top')
-
-samples['top'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1,
-}
-
-addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
-
-###### WW ########
-
-samples['WW'] = {
-    'name': nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu'),
-    'weight': mcCommonWeight + '*nllW',
-    'FilesPerJob': 1
-}
-
-samples['WWewk'] = {
-    'name': nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK_noTop'),
-    'weight': mcCommonWeight + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)', #filter tops and Higgs
-    'FilesPerJob': 2
-}
-
-files = nanoGetSampleFiles(mcDirectory, 'GluGluToWWToENEN') + \
-        nanoGetSampleFiles(mcDirectory, 'GluGluToWWToENMN') + \
-        nanoGetSampleFiles(mcDirectory, 'GluGluToWWToENTN') + \
-        nanoGetSampleFiles(mcDirectory, 'GluGluToWWToMNEN') + \
-        nanoGetSampleFiles(mcDirectory, 'GluGluToWWToMNMN') + \
-        nanoGetSampleFiles(mcDirectory, 'GluGluToWWToMNTN') + \
-        nanoGetSampleFiles(mcDirectory, 'GluGluToWWToTNEN') + \
-        nanoGetSampleFiles(mcDirectory, 'GluGluToWWToTNMN') + \
-        nanoGetSampleFiles(mcDirectory, 'GluGluToWWToTNTN')
-
-samples['ggWW'] = {
-    'name': files,
-    'weight': mcCommonWeight + '*1.53/1.4', # updating k-factor
-    'FilesPerJob': 10
-}
-
-######## Vg ########
-
-files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
-    nanoGetSampleFiles(mcDirectory, 'ZGToLLG')
-
-samples['Vg'] = {
-    'name': files,
-    'weight': mcCommonWeightNoMatch + '*!(Gen_ZGstar_mass > 0)',
-    'FilesPerJob': 10
-}
-addSampleWeight(samples, 'Vg', 'ZGToLLG', '(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
-
-######## VgS ########
-
-files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
-    nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
-    nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
-
-samples['VgS'] = {
-    'name': files,
-    'weight': mcCommonWeight + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
-    'FilesPerJob': 15,
-    'subsamples': {
-      'L': 'gstarLow',
-      'H': 'gstarHigh'
-    }
-}
-addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
-addSampleWeight(samples, 'VgS', 'ZGToLLG', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
-addSampleWeight(samples, 'VgS', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1)')
-
-############ VZ ############
-
-files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu') + \
-    nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
-    nanoGetSampleFiles(mcDirectory, 'ZZTo4L') + \
-    nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
-
-samples['VZ'] = {
-    'name': files,
-    'weight': mcCommonWeight + '*1.11',
-    'FilesPerJob': 2
-}
-
-########## VVV #########
-
-files = nanoGetSampleFiles(mcDirectory, 'ZZZ') + \
-    nanoGetSampleFiles(mcDirectory, 'WZZ') + \
-    nanoGetSampleFiles(mcDirectory, 'WWZ') + \
-    nanoGetSampleFiles(mcDirectory, 'WWW')
-#+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
-
-samples['VVV'] = {
-    'name': files,
-    'weight': mcCommonWeight
-}
+#                 SampleDictionary       Sample                    weight
+addSampleWeight(samples,'DY',        'DYJetsToLL_M-50',           ptllDYW_NLO)
+addSampleWeight(samples,'DY',        'DYJetsToLL_M-10to50-LO',    ptllDYW_LO)
 
 
 
@@ -234,7 +127,8 @@ samples['VVV'] = {
 
 samples['DATA'] = {
   'name': [],
-  'weight': 'METFilter_DATA*LepWPCut',
+  #'weight': 'METFilter_DATA*LepWPCut',
+  'weight': 'METFilter_DATA*'+LepWPCut,
   'weights': [],
   'isData': ['all'],
   'FilesPerJob': 40

@@ -25,7 +25,12 @@ plotFile = 'plot.py'
 
 
 # luminosity to normalize to (in 1/fb)
-lumi = 41.5
+# lumi = 41.5
+#
+# run 2017 B only: 4.823
+# See https://twiki.cern.ch/twiki/bin/viewauth/CMS/PdmV2017Analysis
+lumi = 4.8
+
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
