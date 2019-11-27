@@ -70,8 +70,7 @@ DataRun = [
     #['F','Run2017F-Nano14Dec2018-v1']
 ]
 
-#DataSets = ['MuonEG','SingleMuon','SingleElectron','DoubleMuon', 'DoubleEG']
-DataSets = ['MuonEG','SingleMuon','SingleElectron']
+DataSets = ['MuonEG','SingleMuon','SingleElectron','DoubleMuon', 'DoubleEG']
 
 #
 # trigger logic:
@@ -80,8 +79,8 @@ DataTrig = {
     'MuonEG'         : ' Trigger_ElMu' ,
     'SingleMuon'     : '!Trigger_ElMu && Trigger_sngMu' ,
     'SingleElectron' : '!Trigger_ElMu && !Trigger_sngMu && Trigger_sngEl',
-    #'DoubleMuon'     : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && Trigger_dblMu',
-    #'DoubleEG'       : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && !Trigger_dblMu && Trigger_dblEl'
+    'DoubleMuon'     : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && Trigger_dblMu',
+    'DoubleEG'       : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && !Trigger_dblMu && Trigger_dblEl'
 }
 
 #########################################
