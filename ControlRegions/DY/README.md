@@ -28,6 +28,7 @@ Produce shapes:
 
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=espresso
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=workday 
+    mkShapesMulti.py --pycfg=configuration_complete.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=espresso 
 
     
 Check if jobs are done by doing:
@@ -37,7 +38,9 @@ Check if jobs are done by doing:
 Add root files:
 
     mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files
+    mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files  --doNotCleanup
     mkShapesMulti.py --pycfg=configuration.py --doHadd=1 --batchSplit=Samples,Files  --nThreads=6
+    
     
 If this is too slow try to hadd manually (TAG is the one in configuration.py)
 
@@ -53,7 +56,6 @@ Make plots:
 
     mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_DY2017_final.root
 
-    mkPlot.py --pycfg=configuration.py --inputFile=rootFileTAG/plots_TAG_ALL.root
     
 
 For unblinding the control regions, comment out the signal regions in cuts.py and set isBlind=0 in plot.py. Then rerun mkPlot.py as above. 

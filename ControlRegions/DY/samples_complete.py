@@ -93,9 +93,6 @@ DataTrig = {
 # -> genmatching is not required for Vg sample
 #
 
-#mcCommonWeightNoMatch = 'XSWeight*SFweight*METFilter_MC'
-#mcCommonWeight        = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
-
 mcCommonWeightNoMatch = 'XSWeight*' + SFweight + '*METFilter_MC'
 mcCommonWeight        = 'XSWeight*' + SFweight + '*' + GenLepMatch +'*METFilter_MC'
 
@@ -117,9 +114,10 @@ samples['DY'] = {
         'FilesPerJob': 8,
 }
 
-#                 SampleDictionary       Sample                  weight
-addSampleWeight(samples,'DY',        'DYJetsToLL_M-50',         ptllDYW_NLO)
-addSampleWeight(samples,'DY',        'DYJetsToLL_M-10to50-LO',  ptllDYW_LO)
+#                 SampleDictionary       Sample                    weight
+addSampleWeight(samples,'DY',        'DYJetsToLL_M-50',           ptllDYW_NLO)
+addSampleWeight(samples,'DY',        'DYJetsToLL_M-10to50-LO',    ptllDYW_LO)
+
 
 
 ###### Top #######
@@ -137,7 +135,6 @@ samples['top'] = {
     'FilesPerJob': 1,
 }
 
-#addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 
 ###### WW ########
 
@@ -189,11 +186,12 @@ files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
 
 samples['VgS'] = {
     'name': files,
-    'weight': mcCommonWeight + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
+    #'weight': mcCommonWeight + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
+    'weight': mcCommonWeight + ' * ((Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4) * 0.94 + (Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4) * 1.14)',
     'FilesPerJob': 15,
     'subsamples': {
-      'L': 'gstarLow',
-      'H': 'gstarHigh'
+      'L': 'Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4',
+      'H': 'Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4'
     }
 }
 addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
@@ -219,7 +217,6 @@ files = nanoGetSampleFiles(mcDirectory, 'ZZZ') + \
     nanoGetSampleFiles(mcDirectory, 'WZZ') + \
     nanoGetSampleFiles(mcDirectory, 'WWZ') + \
     nanoGetSampleFiles(mcDirectory, 'WWW')
-#+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
 samples['VVV'] = {
     'name': files,
