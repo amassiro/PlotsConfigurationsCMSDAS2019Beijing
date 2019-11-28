@@ -44,7 +44,8 @@ eleWP='mvaFall17V1Iso_WP90'
 muWP='cut_Tight_HWWW'
 
 LepWPCut        = 'LepCut'+Nlep+'l__ele_'+eleWP+'__mu_'+muWP
-LepWPweight     = 'LepSF'+Nlep+'l__ele_'+eleWP+'__mu_'+muWP
+
+# LepWPweight     = 'LepSF'+Nlep+'l__ele_'+eleWP+'__mu_'+muWP
 
 
 
@@ -53,7 +54,23 @@ LepWPweight     = 'LepSF'+Nlep+'l__ele_'+eleWP+'__mu_'+muWP
 ################################################
 
 XSWeight      = 'XSWeight'
-SFweight      = 'SFweight'+Nlep+'l*'+LepWPweight+'*'+LepWPCut+'*PrefireWeight'
+#SFweight      = 'SFweight'+Nlep+'l*'+LepWPweight+'*'+LepWPCut+'*PrefireWeight'
+#SFweight      = 'SFweight'+Nlep+'l*'+LepWPCut+'*PrefireWeight'
+
+#
+# From formulasToAdd_MC_2017.py
+#
+#
+# formulas['SFweight2l'] = 'event.puWeight*\
+#                           event.TriggerEffWeight_2l*\
+#                           event.Lepton_RecoSF[0]*\
+#                           event.Lepton_RecoSF[1]*\
+#                           event.EMTFbug_veto \
+#                           if event.nLepton > 1 else 0.'
+#
+
+
+SFweight      =  LepWPCut+'*PrefireWeight'
 GenLepMatch   = '(Alt$(Lepton_promptgenmatched[0]*Lepton_promptgenmatched[1], 0))'
 
 
