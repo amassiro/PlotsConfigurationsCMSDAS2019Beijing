@@ -90,7 +90,7 @@ plot['Fake_me']  = {
                   'color': 921,    # kGray + 1
                   'isSignal' : 0,
                   'isData'   : 0,
-                  'scale'    : 1.1    # TRICKERY!                      
+                  'scale'    : 1.0                     
               }
 
 
@@ -98,7 +98,7 @@ plot['Fake_em']  = {
                   'color': 921,    # kGray + 1
                   'isSignal' : 0,
                   'isData'   : 0,
-                  'scale'    : 1.1    # TRICKERY!                  
+                  'scale'    : 1.0                  
               }
 
               

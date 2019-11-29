@@ -1,7 +1,7 @@
 Top
 ====
 
-Non-prompt, a.k.a. fakes
+Top (single top and ttbar)
 
 
 Create histograms
