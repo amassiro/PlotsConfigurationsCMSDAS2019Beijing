@@ -49,7 +49,6 @@ cuts['1j'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13 \
                    && Alt$(CleanJet_pt[1],0)<30 \
                  '
 
-
 cuts['2j'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13 \
                    && Lepton_pt[1]>20 \
                    && Alt$(CleanJet_pt[0],0)>30 \

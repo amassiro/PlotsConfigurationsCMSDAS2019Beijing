@@ -27,14 +27,7 @@ treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
 mcReco = 'Fall2017_102X_nAODv4_Full2017v5'
 mcSteps = 'MCl1loose2017v5__MCCorr2017v5__l2loose__l2tightOR2017v5'
 
-dataReco  = 'Run2017_102X_nAODv4_Full2017v5'
-dataSteps = 'DATAl1loose2017v5__l2loose__l2tightOR2017v5'
-
-fakeSteps = 'DATAl1loose2017v5__l2loose__fakeW'
-
 mcDirectory = os.path.join(treeBaseDir, mcReco, mcSteps)         # --> treeBaseDir/mcReco/mcSteps
-dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)   # --> treeBaseDir/dataReco/dataSteps
-fakeDirectory = os.path.join(treeBaseDir, dataReco, fakeSteps)   # --> treeBaseDir/dataReco/fakeSteps
 
 
 
@@ -68,30 +61,6 @@ GenLepMatch   = '(Alt$(Lepton_promptgenmatched[0]*Lepton_promptgenmatched[1], 0)
 
 
 
-################################################
-############ Data declaration ##################
-################################################
-
-DataRun = [
-    ['B','Run2017B-Nano14Dec2018-v1'],
-    ['C','Run2017C-Nano14Dec2018-v1'],
-    ['D','Run2017D-Nano14Dec2018-v1'],
-    ['E','Run2017E-Nano14Dec2018-v1'],
-    ['F','Run2017F-Nano14Dec2018-v1']
-]
-
-DataSets = ['MuonEG','SingleMuon','SingleElectron','DoubleMuon', 'DoubleEG']
-
-#
-# trigger logic:
-#
-DataTrig = {
-    'MuonEG'         : ' Trigger_ElMu' ,
-    'SingleMuon'     : '!Trigger_ElMu && Trigger_sngMu' ,
-    'SingleElectron' : '!Trigger_ElMu && !Trigger_sngMu && Trigger_sngEl',
-    'DoubleMuon'     : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && Trigger_dblMu',
-    'DoubleEG'       : '!Trigger_ElMu && !Trigger_sngMu && !Trigger_sngEl && !Trigger_dblMu && Trigger_dblEl'
-}
 
 #########################################
 ############ MC COMMON ##################
@@ -233,58 +202,6 @@ samples['VVV'] = {
     'weight': mcCommonWeight
 }
 
-
-
-
-###########################################
-################## FAKE ###################
-###########################################
-
-samples['Fake'] = {
-  'name': [],
-  'weight': 'METFilter_DATA*' + fakeW,
-  'weights': [],
-  'isData': ['all'],
-  'FilesPerJob': 30
-}
-
-
-
-
-
-for _, sd in DataRun:
-  for pd in DataSets:
-    files = nanoGetSampleFiles(fakeDirectory, pd + '_' + sd)
-    samples['Fake']['name'].extend(files)
-    samples['Fake']['weights'].extend([DataTrig[pd]] * len(files))
-
-samples['Fake']['subsamples'] = {
-  'em': 'abs(Lepton_pdgId[0]) == 11',
-  'me': 'abs(Lepton_pdgId[0]) == 13'
-}
-
-
-
-
-
-###########################################
-################## DATA ###################
-###########################################
-
-samples['DATA'] = {
-  'name': [],
-  #'weight': 'METFilter_DATA*LepWPCut',
-  'weight': 'METFilter_DATA*'+LepWPCut,
-  'weights': [],
-  'isData': ['all'],
-  'FilesPerJob': 40
-}
-
-for _, sd in DataRun:
-  for pd in DataSets:
-    files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
-    samples['DATA']['name'].extend(files)
-    samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
 
 
 

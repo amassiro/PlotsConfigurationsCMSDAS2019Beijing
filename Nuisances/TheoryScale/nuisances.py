@@ -1,21 +1,8 @@
 
 
 
-
-nuisances['lumi']  = {
-
-               'name'  : 'lumi_13TeV_2017',
-
-               'samples': {
-                 'DY'       : '1.023',
-                 'Top'      : '1.023',
-                 'ggH_hww'  : '1.023',
-                 },
-               
-               'type'  : 'lnN',
-
-              }
-               
+from LatinoAnalysis.Tools.HiggsXSection import HiggsXSection
+HiggsXS = HiggsXSection()
 
 
 
@@ -62,6 +49,9 @@ nuisances['pdf_Higgs_qqbar'] = {
         'ZH_htt': valueszh
     },
 }
+    
+    
+    
 
 #FIXME: check this 4%
 nuisances['pdf_qqbar'] = {
@@ -143,20 +133,36 @@ nuisances['QCDscale_V'] = {
     'skipCMS': 1,
     'kind': 'weight',
     'type': 'shape',
-    'samples': {'DY': ['LHEScaleWeight[7]', 'LHEScaleWeight[0]']},
+    #'samples': {'DY': ['LHEScaleWeight[7]', 'LHEScaleWeight[0]']},
+    'samples': {'DY': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]']},
     'AsLnN': '1'
 }
+
+#
+# https://cms-nanoaod-integration.web.cern.ch/integration/master-102X/mc94X_doc.html
+#
+#
+# LHEReweightingWeight    
+# LHEScaleWeight  LHE scale variation weights (w_var / w_nominal); [0] is renscfact=0.5d0 facscfact=0.5d0 ; [1] is renscfact=0.5d0 facscfact=1d0 ; [2] is renscfact=0.5d0 facscfact=2d0 ; [3] is renscfact=1d0 facscfact=0.5d0 ; [4] is renscfact=1d0 facscfact=1d0 ; [5] is renscfact=1d0 facscfact=2d0 ; [6] is renscfact=2d0 facscfact=0.5d0 ; [7] is renscfact=2d0 facscfact=1d0 ; [8] is renscfact=2d0 facscfact=2d0
+#
+#
 
 nuisances['QCDscale_VV'] = {
     'name': 'QCDscale_VV',
     'kind': 'weight',
     'type': 'shape',
     'samples': {
-        'Vg': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
-        'VZ': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
+        'Vg':  ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
+        'VZ':  ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
         'VgS': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
     }
 }
+
+
+
+
+
+
 
 # ggww and interference
 nuisances['QCDscale_ggVV'] = {
@@ -176,7 +182,7 @@ nuisances['WWresum0j']  = {
   'samples'  : {
      'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
    },
-  'cutspost'  : lambda self, cuts: [cut for cut in cuts if '0j' in cut]
+  #'cutspost'  : lambda self, cuts: [cut for cut in cuts if '0j' in cut]
 }
 
 nuisances['WWqscale0j']  = {
@@ -187,7 +193,7 @@ nuisances['WWqscale0j']  = {
    'samples'  : {
       'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
     },
-   'cutspost'  : lambda self, cuts: [cut for cut in cuts if '0j' in cut]
+   #'cutspost'  : lambda self, cuts: [cut for cut in cuts if '0j' in cut]
 }
 
 nuisances['WWresum1j']  = {
@@ -198,7 +204,7 @@ nuisances['WWresum1j']  = {
   'samples'  : {
      'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
    },
-  'cutspost'  : lambda self, cuts: [cut for cut in cuts if '1j' in cut]
+  #'cutspost'  : lambda self, cuts: [cut for cut in cuts if '1j' in cut]
 }
 
 nuisances['WWqscale1j']  = {
@@ -209,7 +215,7 @@ nuisances['WWqscale1j']  = {
    'samples'  : {
       'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
     },
-   'cutspost'  : lambda self, cuts: [cut for cut in cuts if '1j' in cut]
+   #'cutspost'  : lambda self, cuts: [cut for cut in cuts if '1j' in cut]
 }
 
 nuisances['WWresum2j']  = {
@@ -220,7 +226,7 @@ nuisances['WWresum2j']  = {
   'samples'  : {
      'WW'   : ['nllW_Rup/nllW', 'nllW_Rdown/nllW'],
    },
-  'cutspost'  : lambda self, cuts: [cut for cut in cuts if '2j' in cut]
+  #'cutspost'  : lambda self, cuts: [cut for cut in cuts if '2j' in cut]
 }
 
 nuisances['WWqscale2j']  = {
@@ -231,12 +237,8 @@ nuisances['WWqscale2j']  = {
    'samples'  : {
       'WW'   : ['nllW_Qup/nllW', 'nllW_Qdown/nllW'],
     },
-   'cutspost'  : lambda self, cuts: [cut for cut in cuts if '2j' in cut]
+   #'cutspost'  : lambda self, cuts: [cut for cut in cuts if '2j' in cut]
 }
-
-
-
-
 
 
 
@@ -260,9 +262,9 @@ nuisances['CRSR_accept_DY'] = {
     'type': 'lnN',
     'samples': {'DY': '1.02'},
     #'samples': {'DY': '1.1'},
-    'cuts': [cut for cut in cuts if '_CR_' in cut],
+    #'cuts': [cut for cut in cuts if '_CR_' in cut],
     #'cutspost': (lambda self, cuts: [cut for cut in cuts if '_DY_' in cut and cut in self['cuts']]),
-    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_DY_' in cut]),
+    #'cutspost': (lambda self, cuts: [cut for cut in cuts if '_DY_' in cut]),
     #'perRecoBin': True
 }
 
@@ -272,8 +274,8 @@ nuisances['CRSR_accept_top'] = {
     'type': 'lnN',
     'samples': {'top': '1.01'},
     #'samples': {'top': '1.05'},
-    'cuts': [cut for cut in cuts if '_CR_' in cut],
-    'cutspost': (lambda self, cuts: [cut for cut in cuts if '_top_' in cut]),
+    #'cuts': [cut for cut in cuts if '_CR_' in cut],
+    #'cutspost': (lambda self, cuts: [cut for cut in cuts if '_top_' in cut]),
 }
 
 
@@ -400,6 +402,54 @@ nuisances['QCDscale_gg_ACCEPT'] = {
     },
     'type': 'lnN',
 }
+
+
+
+
+
+
+
+
+
+
+
+
+#
+##### PS and UE
+#
+# https://cms-nanoaod-integration.web.cern.ch/integration/master-102X/mc102X_doc.html
+#
+# PS weights (w_var / w_nominal); [0] is ISR=0.5 FSR=1; [1] is ISR=1 FSR=0.5; [2] is ISR=2 FSR=1; [3] is ISR=1 FSR=2
+#
+
+nuisances['PS']  = {
+    'name': 'PS',
+    'type': 'shape',
+    'kind': 'weight_envelope',
+    'samples': {
+        'WW': ['PSWeight[0]', 'PSWeight[1]', 'PSWeight[2]', 'PSWeight[3]'],
+    },
+    'AsLnN': '1',
+    'samplespost': lambda self, samples: dict([('WW', ['1.', '1.'])] + [(sname, ['1.', '1.']) for sname in samples if 'ggH_hww' in sname or 'qqH_hww' in sname])
+}
+
+nuisances['UE']  = {
+                'name'  : 'UE',
+                'skipCMS' : 1,
+                'kind'  : 'tree',
+                'type'  : 'shape',
+                'samples'  : {
+#                  'WW'      : ['1.12720771849', '1.13963144574'],
+                  'ggH_hww' : ['1.00211385568', '0.994966378288'],
+                  'qqH_hww' : ['1.00367895901', '0.994831373195']
+                },
+                'folderUp': mcDirectory + '__UEup',
+                'folderDown': mcDirectory + '__UEup',
+                #'AsLnN'      : '1',
+                'synchronized': False
+}
+
+
 
 
 

@@ -54,15 +54,6 @@ groupPlot['VgS']  = {
               }
 
 
-groupPlot['Fake']  = {  
-                  'nameHR' : 'Non-prompt',
-                  'isSignal' : 0,
-                  'color': 921,    # kGray + 1
-                  'samples'  : ['Fake_me', 'Fake_em']
-              }
-
-
-
 groupPlot['top']  = {  
                   'nameHR' : 'tW and t#bar{t}',
                   'isSignal' : 0,
@@ -84,22 +75,6 @@ plot['DY']  = {
                   'scale'    : 1.0
               }
 
-
-
-plot['Fake_me']  = {  
-                  'color': 921,    # kGray + 1
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.0                     
-              }
-
-
-plot['Fake_em']  = {  
-                  'color': 921,    # kGray + 1
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.0                  
-              }
 
               
 plot['top'] = {   
@@ -161,19 +136,6 @@ plot['VgS_L'] = {
                   'isData'   : 0,
                   'scale'    : 1.0
                   }
-
-# data
-
-plot['DATA']  = { 
-                  'nameHR' : 'Data',
-                  'color': 1 ,  
-                  'isSignal' : 0,
-                  'isData'   : 1 ,
-                  'isBlind'  : 0
-              }
-
-
-
 
 # additional options
 
