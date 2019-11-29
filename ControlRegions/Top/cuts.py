@@ -34,23 +34,23 @@ supercut = ' && '.join(supercut_vector)
 # and now defines the different phase spaces
 #
 
-cuts['df'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == 11*13 \
+cuts['df'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13 \
                    && Lepton_pt[1]>20 \
                  '
 
-cuts['0j'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == 11*13 \
+cuts['0j'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13 \
                    && Lepton_pt[1]>20 \
                    && Alt$(CleanJet_pt[0],0)<30 \
                  '
 
-cuts['1j'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == 11*13 \
+cuts['1j'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13 \
                    && Lepton_pt[1]>20 \
                    && Alt$(CleanJet_pt[0],0)>30 \
                    && Alt$(CleanJet_pt[1],0)<30 \
                  '
 
 
-cuts['2j'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == 11*13 \
+cuts['2j'] =  ' Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13 \
                    && Lepton_pt[1]>20 \
                    && Alt$(CleanJet_pt[0],0)>30 \
                    && Alt$(CleanJet_pt[1],0)>30 \
