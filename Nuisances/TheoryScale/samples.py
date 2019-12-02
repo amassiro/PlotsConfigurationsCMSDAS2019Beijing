@@ -30,6 +30,9 @@ mcSteps = 'MCl1loose2017v5__MCCorr2017v5__l2loose__l2tightOR2017v5'
 mcDirectory = os.path.join(treeBaseDir, mcReco, mcSteps)         # --> treeBaseDir/mcReco/mcSteps
 
 
+#/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_SigOnly_Full2017v5/MCl1loose2017v5__MCCorr2017v5__l2loose__l2tightOR2017v5__wwSel/
+mcRecoSignal = 'Fall2017_102X_nAODv5_SigOnly_Full2017v5'
+mcDirectorySignal = os.path.join(treeBaseDir, mcRecoSignal, mcSteps) 
 
 
 
@@ -201,6 +204,105 @@ samples['VVV'] = {
     'name': files,
     'weight': mcCommonWeight
 }
+
+
+
+
+
+
+
+###########################################
+#############   SIGNALS  ##################
+###########################################
+
+
+#/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_SigOnly_Full2017v5/MCl1loose2017v5__MCCorr2017v5__l2loose__l2tightOR2017v5__wwSel/
+
+
+#### ggH -> WW
+
+samples['ggH_hww'] = {
+    'name': nanoGetSampleFiles(mcDirectorySignal, 'GluGluHToWWTo2L2NuPowheg_M125'),
+    'weight': mcCommonWeight,
+    #'weight': [mcCommonWeight, {'class': 'Weight2MINLO', 'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE')}],
+    'FilesPerJob': 4,
+    #'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations]
+}
+
+
+############ VBF H->WW ############
+samples['qqH_hww'] = {
+    'name': nanoGetSampleFiles(mcDirectory, 'VBFHToWWTo2L2NuPowheg_M125'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 3
+}
+
+
+############# ZH H->WW ############
+
+samples['ZH_hww'] = {
+    'name':   nanoGetSampleFiles(mcDirectory, 'HZJ_HToWWTo2L2Nu_M125'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 1
+}
+
+
+samples['ggZH_hww'] = {
+    'name':   nanoGetSampleFiles(mcDirectory, 'GluGluZH_HToWWTo2L2Nu_M125'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 2
+}
+
+
+############ WH H->WW ############
+
+samples['WH_hww'] = {
+    'name':   nanoGetSampleFiles(mcDirectory, 'HWplusJ_HToWW_M125') + nanoGetSampleFiles(mcDirectory, 'HWminusJ_HToWW_M125'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 2
+}
+
+
+############ ttH ############
+
+samples['ttH_hww'] = {
+    'name':   nanoGetSampleFiles(mcDirectory, 'ttHToNonbb_M125'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 1
+}
+
+
+############ H->TauTau ############
+
+samples['ggH_htt'] = {
+    'name': nanoGetSampleFiles(mcDirectorySignal, 'GluGluHToTauTau_M125_ext1'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 1
+}
+
+
+samples['qqH_htt'] = {
+    'name': nanoGetSampleFiles(mcDirectory, 'VBFHToTauTau_M125'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 2
+}
+
+
+samples['ZH_htt'] = {
+    'name': nanoGetSampleFiles(mcDirectory, 'HZJ_HToTauTau_M125'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 2
+}
+
+
+samples['WH_htt'] = {
+    'name':  nanoGetSampleFiles(mcDirectory, 'HWplusJ_HToTauTau_M125') + nanoGetSampleFiles(mcDirectory, 'HWminusJ_HToTauTau_M125'),
+    'weight': mcCommonWeight,
+    'FilesPerJob': 2
+}
+
+
+###########################################
 
 
 

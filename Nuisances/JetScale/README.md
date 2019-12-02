@@ -1,4 +1,4 @@
-Experimental uncertainties: Lepton scale
+Experimental uncertainties: JES
 ====
 
 Understanding experimental uncertainties.
@@ -31,7 +31,7 @@ Plots
 Make plots:
 
 
-    mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_LeptonScaleNuisances.root
+    mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_JetScaleNuisances.root
 
     
 
@@ -41,7 +41,7 @@ Datacard
 Make datacard:
 
 
-    mkDatacards.py --pycfg=configuration.py --inputFile=rootFile/plots_LeptonScaleNuisances.root
+    mkDatacards.py --pycfg=configuration.py --inputFile=rootFile/plots_JetScaleNuisances.root
 
     
 Check nuisances
@@ -50,10 +50,10 @@ Check nuisances
     cd ../../../LatinoAnalysis/ShapeAnalysis/test/draw
 
     python DrawNuisancesAll.py \
-     --inputFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/LeptonScale/datacards/df/ptll/shapes/histos_df.root  \
-     --outputDirPlots ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/LeptonScale/df_nuisance  \
-     --nuisancesFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/LeptonScale/nuisances.py  \
-     --samplesFile   ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/LeptonScale/samples.py \
+     --inputFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/datacards/df/ptll/shapes/histos_df.root  \
+     --outputDirPlots ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/df_nuisance  \
+     --nuisancesFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/nuisances.py  \
+     --samplesFile   ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/samples.py \
      --cutName df
      
      

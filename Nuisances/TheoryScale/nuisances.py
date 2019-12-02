@@ -444,7 +444,7 @@ nuisances['UE']  = {
                   'qqH_hww' : ['1.00367895901', '0.994831373195']
                 },
                 'folderUp': mcDirectory + '__UEup',
-                'folderDown': mcDirectory + '__UEup',
+                'folderDown': mcDirectory + '__UEdo',
                 #'AsLnN'      : '1',
                 'synchronized': False
 }

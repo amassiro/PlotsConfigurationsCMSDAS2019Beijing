@@ -1,7 +1,7 @@
 # example of configuration file
 treeName= 'Events'
 
-tag = 'LeptonScaleNuisances'
+tag = 'JetScaleNuisances'
 
 
 # used by mkShape to define output directory for root files
@@ -33,7 +33,7 @@ lumi = 41.5
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'plotLeptonScaleNuisances'
+outputDirPlots = 'plotJetScaleNuisances'
 
 
 # used by mkDatacards to define output directory for datacards
