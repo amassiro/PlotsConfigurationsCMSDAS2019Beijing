@@ -56,4 +56,12 @@ Check nuisances
      --samplesFile   ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/samples.py \
      --cutName df
      
-     
+    
+    
+    python DrawNuisancesAll.py \
+     --inputFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/datacards/df/njet/shapes/histos_df.root  \
+     --outputDirPlots ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/df_nuisance_njet  \
+     --nuisancesFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/nuisances.py  \
+     --samplesFile   ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/samples.py \
+     --cutName df
+    

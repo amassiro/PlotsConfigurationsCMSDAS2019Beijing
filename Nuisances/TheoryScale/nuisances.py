@@ -295,6 +295,9 @@ nuisances['CRSR_accept_top'] = {
 #
 #   see https://twiki.cern.ch/twiki/bin/viewauth/CMS/HiggsWG/SignalModelingTools
 
+
+
+    
 thus = [
     ('THU_ggH_Mu', 'ggH_mu'),
     ('THU_ggH_Res', 'ggH_res'),
@@ -443,8 +446,10 @@ nuisances['UE']  = {
                   'ggH_hww' : ['1.00211385568', '0.994966378288'],
                   'qqH_hww' : ['1.00367895901', '0.994831373195']
                 },
-                'folderUp': mcDirectory + '__UEup',
-                'folderDown': mcDirectory + '__UEdo',
+                #'folderUp': mcDirectory + '__UEup',
+                #'folderDown': mcDirectory + '__UEdo',
+                'folderUp': mcDirectorySignal + '__UEup',
+                'folderDown': mcDirectorySignal + '__UEdo',
                 #'AsLnN'      : '1',
                 'synchronized': False
 }
