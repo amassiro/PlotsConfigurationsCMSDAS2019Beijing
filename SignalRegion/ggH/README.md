@@ -72,6 +72,10 @@ Resubmit if needed:
     sed -i 's/espresso/workday/g'    /afs/cern.ch/user/a/amassiro/work/Latinos/Framework/JobsCondor/jobs/mkShapes__ggH/mkShapes__ggH__ALL__ggH_hww.jds
     
         
+        
+    export _condor_SCHEDD_HOST="bigbird17.cern.ch"
+    
+    
     
 Plots
 ====

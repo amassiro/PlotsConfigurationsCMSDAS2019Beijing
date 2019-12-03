@@ -44,6 +44,21 @@ def makeMCDirectory(var=''):
 #mcDirectory = os.path.join(treeBaseDir, mcReco, mcSteps)         # --> treeBaseDir/mcReco/mcSteps
 mcDirectory = makeMCDirectory()
 
+
+
+
+#/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv5_SigOnly_Full2017v5/MCl1loose2017v5__MCCorr2017v5__l2loose__l2tightOR2017v5__wwSel/
+mcRecoSignal = 'Fall2017_102X_nAODv5_SigOnly_Full2017v5'
+
+def makeMCDirectorySignal(var=''):
+    if var:
+        return os.path.join(treeBaseDir, mcRecoSignal, mcSteps.format(var='__' + var))
+    else:
+        return os.path.join(treeBaseDir, mcRecoSignal, mcSteps.format(var=''))
+
+mcDirectorySignal = makeMCDirectorySignal()
+
+
 dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)   # --> treeBaseDir/dataReco/dataSteps
 fakeDirectory = os.path.join(treeBaseDir, dataReco, fakeSteps)   # --> treeBaseDir/dataReco/fakeSteps
 
@@ -235,7 +250,7 @@ samples['VVV'] = {
 #### ggH -> WW
 
 samples['ggH_hww'] = {
-    'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToWWTo2L2NuPowheg_M125'),
+    'name': nanoGetSampleFiles(mcDirectorySignal, 'GluGluHToWWTo2L2NuPowheg_M125'),
     'weight': mcCommonWeight,
     #'weight': [mcCommonWeight, {'class': 'Weight2MINLO', 'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE')}],
     'FilesPerJob': 4,
@@ -245,7 +260,7 @@ samples['ggH_hww'] = {
 
 ############ VBF H->WW ############
 samples['qqH_hww'] = {
-    'name': nanoGetSampleFiles(mcDirectory, 'VBFHToWWTo2L2NuPowheg_M125'),
+    'name': nanoGetSampleFiles(mcDirectorySignal, 'VBFHToWWTo2L2NuPowheg_M125'),
     'weight': mcCommonWeight,
     'FilesPerJob': 3
 }
@@ -288,7 +303,7 @@ samples['ttH_hww'] = {
 ############ H->TauTau ############
 
 samples['ggH_htt'] = {
-    'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToTauTau_M125_ext1'),
+    'name': nanoGetSampleFiles(mcDirectorySignal, 'GluGluHToTauTau_M125_ext1'),
     'weight': mcCommonWeight,
     'FilesPerJob': 1
 }

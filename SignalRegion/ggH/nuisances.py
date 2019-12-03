@@ -296,8 +296,8 @@ nuisances['UE']  = {
                   'ggH_hww' : ['1.00211385568', '0.994966378288'],
                   'qqH_hww' : ['1.00367895901', '0.994831373195']
                 },
-                'folderUp': makeMCDirectory('UEup'),
-                'folderDown': makeMCDirectory('UEdo'),
+                'folderUp': makeMCDirectorySignal('UEup'),
+                'folderDown': makeMCDirectorySignal('UEdo'),
                 'AsLnN'      : '1',
                 'synchronized': False
 }
