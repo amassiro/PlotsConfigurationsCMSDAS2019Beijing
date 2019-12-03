@@ -18,9 +18,12 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
 
 
+
+
 ################################################################
 ### Definition of common cuts (on lepton id/iso) and weights ###
 ################################################################
+
 
 
 eleWP = 'mvaFall17V1Iso_WP90'
@@ -38,31 +41,6 @@ aliases['PromptGenLepMatch2l'] = {
     'samples': mc
 }
 
-
-
-
-# data/MC scale factors
-aliases['SFweight'] = {
-    'expr': ' * '.join(['SFweight2l', 'LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut', 'btagSF', 'PrefireWeight', 'PUJetIdSF']),
-    'samples': mc
-}
-# variations
-aliases['SFweightEleUp'] = {
-    'expr': 'LepSF2l__ele_'+eleWP+'__Up',
-    'samples': mc
-}
-aliases['SFweightEleDown'] = {
-    'expr': 'LepSF2l__ele_'+eleWP+'__Do',
-    'samples': mc
-}
-aliases['SFweightMuUp'] = {
-    'expr': 'LepSF2l__mu_'+muWP+'__Up',
-    'samples': mc
-}
-aliases['SFweightMuDown'] = {
-    'expr': 'LepSF2l__mu_'+muWP+'__Do',
-    'samples': mc
-}
 
 
 
@@ -140,7 +118,6 @@ aliases['sr'] = {
 
 
 
-
 ###########################
 ### B tag scale factors ###
 ###########################
@@ -210,17 +187,17 @@ for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2',
 
 ## PU jet Id SF
 
-#puidSFSource = '%s/src/LatinoAnalysis/NanoGardener/python/data/JetPUID_effcyandSF.root' % os.getenv('CMSSW_BASE')
+puidSFSource = '%s/src/LatinoAnalysis/NanoGardener/python/data/JetPUID_effcyandSF.root' % os.getenv('CMSSW_BASE')
 
-#aliases['PUJetIdSF'] = {
-    #'linesToAdd': [
-        #'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_BASE'),
-        #'.L %s/patches/pujetidsf_event.cc+' % configurations
-    #],
-    #'class': 'PUJetIdEventSF',
-    #'args': (puidSFSource, '2017', 'loose'),
-    #'samples': mc
-#}
+aliases['PUJetIdSF'] = {
+    'linesToAdd': [
+        'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_BASE'),
+        '.L %s/patches/pujetidsf_event.cc+' % configurations
+    ],
+    'class': 'PUJetIdEventSF',
+    'args': (puidSFSource, '2017', 'loose'),
+    'samples': mc
+}
 
 
 
@@ -308,5 +285,43 @@ for thu in thus:
         'args': (thu,),
         'samples': ['ggH_hww']
     }
+
+
+
+
+
+
+
+#########################################################################
+### Addition definition of common cuts (on lepton id/iso) and weights ###
+#########################################################################
+
+
+
+
+# data/MC scale factors
+aliases['SFweight'] = {
+    'expr': ' * '.join(['SFweight2l', 'LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut', 'btagSF', 'PrefireWeight', 'PUJetIdSF']),
+    'samples': mc
+}
+# variations
+aliases['SFweightEleUp'] = {
+    'expr': 'LepSF2l__ele_'+eleWP+'__Up',
+    'samples': mc
+}
+aliases['SFweightEleDown'] = {
+    'expr': 'LepSF2l__ele_'+eleWP+'__Do',
+    'samples': mc
+}
+aliases['SFweightMuUp'] = {
+    'expr': 'LepSF2l__mu_'+muWP+'__Up',
+    'samples': mc
+}
+aliases['SFweightMuDown'] = {
+    'expr': 'LepSF2l__mu_'+muWP+'__Do',
+    'samples': mc
+}
+
+
 
 
