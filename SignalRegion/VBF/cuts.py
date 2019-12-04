@@ -13,9 +13,8 @@ supercut_vector = [
                    'mll>12.',
                    'PuppiMET_pt > 20.',
                    'ptll > 30.',
-                   'mth > 60.',
                    'Lepton_pdgId[0]*Lepton_pdgId[1] <0',
-                   '(Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) == 0)'
+                   'Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13'
                    ]
 
 #
