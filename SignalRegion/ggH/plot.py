@@ -285,30 +285,30 @@ plot['ZH_htt'] = {
                  'scale'    : 1    #
                  }
 
-plot['bbH_htt'] = {
-                 'nameHR' : 'bbHtt',
-                 'color': 632-1, # kRed-1 
-                 'isSignal' : 1,
-                 'isData'   : 0,
-                 'scale'    : 1    #
-                 }
+#plot['bbH_htt'] = {
+                 #'nameHR' : 'bbHtt',
+                 #'color': 632-1, # kRed-1 
+                 #'isSignal' : 1,
+                 #'isData'   : 0,
+                 #'scale'    : 1    #
+                 #}
 
-plot['ttH_htt'] = {
-                 'nameHR' : 'bbHtt',
-                 'color': 632-2, # kRed-1 
-                 'isSignal' : 1,
-                 'isData'   : 0,
-                 'scale'    : 1    #
-                 }
+#plot['ttH_htt'] = {
+                 #'nameHR' : 'bbHtt',
+                 #'color': 632-2, # kRed-1 
+                 #'isSignal' : 1,
+                 #'isData'   : 0,
+                 #'scale'    : 1    #
+                 #}
 
 
-plot['ggZH_htt'] = {
-                 'nameHR' : 'ggZHtt',
-                 'color': 632+4, # kRed+4
-                 'isSignal' : 1,
-                 'isData'   : 0,    
-                 'scale'    : 1    #
-                 }
+#plot['ggZH_htt'] = {
+                 #'nameHR' : 'ggZHtt',
+                 #'color': 632+4, # kRed+4
+                 #'isSignal' : 1,
+                 #'isData'   : 0,    
+                 #'scale'    : 1    #
+                 #}
 
 plot['WH_htt'] = {
                  'nameHR' : 'WHtt',
@@ -346,7 +346,7 @@ plot['DATA']  = {
                   'color': 1 ,  
                   'isSignal' : 0,
                   'isData'   : 1 ,
-                  'isBlind'  : 1
+                  'isBlind'  : 0    # 1 or 0
               }
 
 

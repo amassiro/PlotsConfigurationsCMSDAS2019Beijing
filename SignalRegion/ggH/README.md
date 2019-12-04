@@ -12,6 +12,7 @@ Produce shapes:
 
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=espresso
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=workday 
+    mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=workday  --dry-run
     
     
 Check if jobs are done by doing:
@@ -92,7 +93,7 @@ Plots
 Make plots:
 
 
-    mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_JetScaleNuisances.root
+    mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_ggH.root
 
     
 
@@ -102,27 +103,7 @@ Datacard
 Make datacard:
 
 
-    mkDatacards.py --pycfg=configuration.py --inputFile=rootFile/plots_JetScaleNuisances.root
+    mkDatacards.py --pycfg=configuration.py --inputFile=rootFile/plots_ggH.root
 
-    
-Check nuisances
-====
 
-    cd ../../../LatinoAnalysis/ShapeAnalysis/test/draw
-
-    python DrawNuisancesAll.py \
-     --inputFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/datacards/df/ptll/shapes/histos_df.root  \
-     --outputDirPlots ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/df_nuisance  \
-     --nuisancesFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/nuisances.py  \
-     --samplesFile   ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/samples.py \
-     --cutName df
-     
-    
-    
-    python DrawNuisancesAll.py \
-     --inputFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/datacards/df/njet/shapes/histos_df.root  \
-     --outputDirPlots ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/df_nuisance_njet  \
-     --nuisancesFile ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/nuisances.py  \
-     --samplesFile   ../../../../PlotsConfigurationsCMSDAS2019Beijing/Nuisances/JetScale/samples.py \
-     --cutName df
     

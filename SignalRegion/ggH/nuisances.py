@@ -201,18 +201,33 @@ nuisances['eff_e'] = {
     'name': 'CMS_eff_e_2017',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc if 'DY' not in skey), #FIXME Add DY
+    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc if ('DY' not in skey and 'ggH' not in skey)), #FIXME Add DY
 }
 
 nuisances['electronpt'] = {
     'name': 'CMS_scale_e_2017',
     'kind': 'tree',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if 'DY' not in skey), #FIXME Add DY
+    'samples': dict((skey, ['1', '1']) for skey in mc if ('DY' not in skey and 'ggH' not in skey)), #FIXME Add DY
     'folderUp': makeMCDirectory('ElepTup'),
     'folderDown': makeMCDirectory('ElepTdo'),
     'AsLnN': '1'
 }
+
+
+
+nuisances['electronptggH'] = {
+    'name': 'CMS_scale_e_2017_ggH',
+    'kind': 'tree',
+    'type': 'shape',
+    'samples': dict((skey, ['1', '1']) for skey in mc if ('ggH' in skey)), #FIXME Add DY
+    'folderUp': makeMCDirectorySignal('ElepTup'),
+    'folderDown': makeMCDirectorySignal('ElepTdo'),
+    'AsLnN': '1'
+}
+
+
+
 
 ##### Muon Efficiency and energy scale
 
@@ -227,11 +242,24 @@ nuisances['muonpt'] = {
     'name': 'CMS_scale_m_2017',
     'kind': 'tree',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if 'DY' not in skey), #FIXME Add DY
+    'samples': dict((skey, ['1', '1']) for skey in mc if ('DY' not in skey and 'ggH' not in skey)), #FIXME Add DY
     'folderUp': makeMCDirectory('MupTup'),
     'folderDown': makeMCDirectory('MupTdo'),
     'AsLnN': '1'
 }
+
+
+nuisances['muonptggH'] = {
+    'name': 'CMS_scale_m_2017_ggH',
+    'kind': 'tree',
+    'type': 'shape',
+    'samples': dict((skey, ['1', '1']) for skey in mc if ('ggH' in skey)), #FIXME Add DY
+    'folderUp': makeMCDirectorySignal('MupTup'),
+    'folderDown': makeMCDirectorySignal('MupTdo'),
+    'AsLnN': '1'
+}
+
+
 
 ##### Jet energy scale
 
@@ -239,11 +267,24 @@ nuisances['jes'] = {
     'name': 'CMS_scale_j_2017',
     'kind': 'tree',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if 'DY' not in skey), #FIXME Add DY
+    'samples': dict((skey, ['1', '1']) for skey in mc if ('DY' not in skey and 'ggH' not in skey)), #FIXME Add DY
     'folderUp': makeMCDirectory('JESup'),
     'folderDown': makeMCDirectory('JESdo'),
     'AsLnN': '1'
 }
+
+
+nuisances['jesggH'] = {
+    'name': 'CMS_scale_j_2017_ggH',
+    'kind': 'tree',
+    'type': 'shape',
+    'samples': dict((skey, ['1', '1']) for skey in mc if ('ggH' in skey)), #FIXME Add DY
+    'folderUp': makeMCDirectorySignal('JESup'),
+    'folderDown': makeMCDirectorySignal('JESdo'),
+    'AsLnN': '1'
+}
+
+
 
 ##### MET energy scale
 
@@ -251,11 +292,23 @@ nuisances['met'] = {
     'name': 'CMS_scale_met_2017',
     'kind': 'tree',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if 'DY' not in skey), #FIXME Add DY
+    'samples': dict((skey, ['1', '1']) for skey in mc if ('DY' not in skey and 'ggH' not in skey)), #FIXME Add DY
     'folderUp': makeMCDirectory('METup'),
     'folderDown': makeMCDirectory('METdo'),
     'AsLnN': '1'
 }
+
+nuisances['metggH'] = {
+    'name': 'CMS_scale_met_2017_ggH',
+    'kind': 'tree',
+    'type': 'shape',
+    'samples': dict((skey, ['1', '1']) for skey in mc if ('ggH' in skey)), #FIXME Add DY
+    'folderUp': makeMCDirectorySignal('METup'),
+    'folderDown': makeMCDirectorySignal('METdo'),
+    'AsLnN': '1'
+}
+
+
 
 ##### Pileup
 
@@ -286,21 +339,39 @@ nuisances['PS']  = {
     'samplespost': lambda self, samples: dict([('WW', ['1.', '1.'])] + [(sname, ['1.', '1.']) for sname in samples if 'ggH_hww' in sname or 'qqH_hww' in sname])
 }
 
-nuisances['UE']  = {
-                'name'  : 'UE',
+nuisances['UE_ggH']  = {
+                'name'  : 'UEggH',
                 'skipCMS' : 1,
                 'kind'  : 'tree',
                 'type'  : 'shape',
                 'samples'  : {
 #                  'WW'      : ['1.12720771849', '1.13963144574'],
                   'ggH_hww' : ['1.00211385568', '0.994966378288'],
-                  'qqH_hww' : ['1.00367895901', '0.994831373195']
                 },
                 'folderUp': makeMCDirectorySignal('UEup'),
                 'folderDown': makeMCDirectorySignal('UEdo'),
                 'AsLnN'      : '1',
                 'synchronized': False
 }
+
+
+nuisances['UE_qqH']  = {
+                'name'  : 'UEqqH',
+                'skipCMS' : 1,
+                'kind'  : 'tree',
+                'type'  : 'shape',
+                'samples'  : {
+#                  'WW'      : ['1.12720771849', '1.13963144574'],
+                  'qqH_hww' : ['1.00367895901', '0.994831373195']
+                },
+                'folderUp': makeMCDirectory('UEup'),
+                'folderDown': makeMCDirectory('UEdo'),
+                'AsLnN'      : '1',
+                'synchronized': False
+}
+
+
+
 
 ####### Generic "cross section uncertainties"
 

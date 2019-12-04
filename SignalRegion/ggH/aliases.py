@@ -67,7 +67,8 @@ aliases['gstarHigh'] = {
 
 aliases['CleanJet_passPt'] = {
     #'expr': '((TMath::Abs(CleanJet_eta) < 2.5 || TMath::Abs(CleanJet_eta) > 3.) && CleanJet_pt > 30.) || (TMath::Abs(CleanJet_eta) > 2.5 && TMath::Abs(CleanJet_eta) < 3. && CleanJet_pt > 60.)'
-    'expr': '((TMath::Abs(CleanJet_eta) < 2.5 || TMath::Abs(CleanJet_eta) > 3.) && CleanJet_pt > 30.)'
+    #'expr': '((TMath::Abs(CleanJet_eta) < 2.5 || TMath::Abs(CleanJet_eta) > 3.) && CleanJet_pt > 30.)'
+    'expr': '(CleanJet_pt > 30.)'
 }
 
 # No jet with pt > 30 GeV

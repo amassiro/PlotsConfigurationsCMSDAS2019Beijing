@@ -260,7 +260,7 @@ samples['ggH_hww'] = {
 
 ############ VBF H->WW ############
 samples['qqH_hww'] = {
-    'name': nanoGetSampleFiles(mcDirectorySignal, 'VBFHToWWTo2L2NuPowheg_M125'),
+    'name': nanoGetSampleFiles(mcDirectory, 'VBFHToWWTo2L2NuPowheg_M125'),
     'weight': mcCommonWeight,
     'FilesPerJob': 3
 }
