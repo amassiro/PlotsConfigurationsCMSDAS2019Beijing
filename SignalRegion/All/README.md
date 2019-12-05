@@ -163,7 +163,7 @@ Complex model
 
     text2workspace.py -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
                   --PO 'map=.*/ggH_h*:muGGH[1,0.0,2.0]' \
-                  --PO 'map=.*/qqH_h*:muVBF[1,0.0,2.0]' \
+                  --PO 'map=.*/qqH_h*:muVBF[1,-10.0,9.0]' \
                   combined.txt -o combined.multidim.root
                     
 
