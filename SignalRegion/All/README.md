@@ -198,11 +198,3 @@ And via condor:
 
     
     
-
-
-
-               
-    
-    
-    
-    
