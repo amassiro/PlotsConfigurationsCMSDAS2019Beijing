@@ -1,6 +1,13 @@
 # variables
 
 #variables = {}
+
+variables['events']  = {   'name': '1',
+                        'range' : (1,0,2),
+                        'xaxis' : 'events',
+                         'fold' : 3
+                        }
+
 variables['nvtx']  = {   'name': 'PV_npvsGood',      
                         'range' : (100,0,100),  
                         'xaxis' : 'nvtx', 
