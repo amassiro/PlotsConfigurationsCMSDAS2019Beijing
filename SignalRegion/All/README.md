@@ -162,8 +162,8 @@ Complex model
 
 
     text2workspace.py -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel \
-                  --PO 'map=.*/ggH_h*:muGGH[1,-10,10]' \
-                  --PO 'map=.*/qqH_h*:muVBF[1,-10,10]' \
+                  --PO 'map=.*/ggH_h*:muGGH[1,0.0,2.0]' \
+                  --PO 'map=.*/qqH_h*:muVBF[1,0.0,2.0]' \
                   combined.txt -o combined.multidim.root
                     
 
@@ -182,18 +182,17 @@ And via condor:
 
     combineTool.py -d   combined.multidim.root  -M MultiDimFit    \
                --algo=grid     --X-rtd OPTIMIZE_BOUNDS=0   \
+               --setParameters  muGGH=1,muVBF=1 \
                -t -1   -n "mycondor"   \
-               --points 1000    --job-mode condor \
+               --points 100    --job-mode condor \
                --task-name condor-all    \
                --split-points 1 
 
      
      
      
-     
-     
                
-    hadd higgs_2dScan.root   lxbatch/higgsCombineLH6Dpt1MClxbatchOnlyr1r2.POINTS.*.MultiDimFit.mH120.root
+    hadd higgs_2dScan.root   higgsCombinemycondor.POINTS.*.MultiDimFit.mH120.root
 
     r99t    higgs_2dScan.root     Draw2DImproved.cxx\(\"#mu_\{GGH\}\",\"#mu_\{VBF\}\",\"muGGH\",\"muVBF\",2,\"1\"\)
 

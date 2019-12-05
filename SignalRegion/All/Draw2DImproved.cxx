@@ -91,7 +91,9 @@ void Draw2DImproved(std::string xName = "r_{1}", std::string yName = "r_{3}", st
   graphScan->GetHistogram()->GetYaxis()->SetTitle(yName.c_str());
   graphScan->GetHistogram()->GetZaxis()->SetTitle("- 2#Delta logL");
   // //   graphScan->Draw("cont4z");
-  graphScan->GetHistogram()->GetZaxis()->SetRangeUser(0,9.99);  
+  graphScan->GetHistogram()->GetZaxis()->SetRangeUser(0.00,9.99);  
+//   graphScan->GetHistogram()->GetXaxis()->SetRangeUser(0.00,2.00);  
+//   graphScan->GetHistogram()->GetYaxis()->SetRangeUser(0.00,2.00);  
   
   if (FillHighLL) {
     for (int i=0; i<graphScan->GetHistogram()->GetSize(); i++) {
@@ -238,11 +240,7 @@ void Draw2DImproved(std::string xName = "r_{1}", std::string yName = "r_{3}", st
   texPre->SetLineWidth(2);
   
   TLatex * tex3;
-  //   tex3 = new TLatex(0.236,0.92,"L = 12.9 fb^{-1}  Preliminary");
-  //   tex3 = new TLatex(0.236,0.92,"L = 15.2 fb^{-1}");
-  tex3 = new TLatex(0.55,0.92,"L = 15.2 fb^{-1}   (13 TeV)");
-  //   tex3 = new TLatex(0.55,0.92,"L = 2.3 fb^{-1}   (13 TeV)");
-  //     tex3 = new TLatex(0.55,0.92,"L = 12.9 fb^{-1}   (13 TeV)");
+  tex3 = new TLatex(0.55,0.92,"L = 41.5 fb^{-1}   (13 TeV)");
   tex3->SetNDC();
   tex3->SetTextFont(52);
   tex3->SetTextSize(0.035);
